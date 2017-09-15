@@ -57,6 +57,7 @@ class Card extends RelationalEntity implements JsonSerializable {
 		$this->addType('archived', 'boolean');
 		$this->addType('notified', 'boolean');
 		$this->addRelation('labels');
+		$this->addRelation('participants');
 		$this->addResolvable('owner');
 	}
 

@@ -68,7 +68,7 @@ app.controller('CardController', function ($scope, $rootScope, $routeParams, $lo
 	$scope.cardUpdate = function (card) {
 		CardService.update(CardService.getCurrent()).then(function (data) {
 			$scope.status.cardEditDescription = false;
-			$('#card-description').find('.save-indicator').fadeIn(500).fadeOut(1000);
+			$('#card-description').parent().find('.save-indicator').show().fadeIn(500).fadeOut(1000);
 		});
 	};
 

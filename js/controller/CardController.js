@@ -23,7 +23,7 @@
 /* global app */
 /* global moment */
 
-app.controller('CardController', function ($scope, $rootScope, $routeParams, $location, $stateParams, BoardService, CardService, StackService, StatusService) {
+app.controller('CardController', function ($scope, $rootScope, $routeParams, $location, $stateParams, $timeout, BoardService, CardService, StackService, StatusService) {
 	$scope.sidebar = $rootScope.sidebar;
 	$scope.status = {};
 
@@ -113,5 +113,35 @@ app.controller('CardController', function ($scope, $rootScope, $routeParams, $lo
 		element.duedate = null;
 		CardService.update(element);
 		StackService.updateCard(element);
+	};
+
+	/**
+	 * Assigning users to cards
+	 */
+
+	/**
+	 * Show ui-select field when clicking the add button
+	 */
+	$scope.showAssignUser = function() {
+		$scope.status.showAssignUser = true;
+		$timeout(function() {
+			$("#assignUserSelect").find('a')[0].click();
+		});
+	};
+
+	$scope.assingUserOpenClose = function(isOpen) {
+		if (!isOpen) {
+			$scope.status.showAssignUser = false;
+		}
+	};
+
+	$scope.addAssignedUser = function(item) {
+		$scope.status.showAssignUser = false;
+		$('assignUserSelect').hide();
+		console.log(a);
+	};
+
+	$scope.removeAssignedUser = function() {
+
 	};
 });

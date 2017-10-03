@@ -77,6 +77,7 @@ class CardTest extends \PHPUnit_Framework_TestCase {
 			'duedate' => null,
 			'overdue' => 0,
 			'archived' => false,
+			'assignedUsers' => null,
 		], $card->jsonSerialize());
 	}
 	public function testJsonSerializeLabels() {
@@ -96,6 +97,28 @@ class CardTest extends \PHPUnit_Framework_TestCase {
 			'duedate' => null,
 			'overdue' => 0,
 			'archived' => false,
+		], $card->jsonSerialize());
+	}
+
+	public function testJsonSerializeAsignedUsers() {
+		$card = $this->createCard();
+		$card->setAssignedUsers([ 'user1' ]);
+		$card->setLabels(array());
+		$this->assertEquals([
+			'id' => 1,
+			'title' => "My Card",
+			'description' => "a long description",
+			'type' => 'text',
+			'lastModified' => 234,
+			'createdAt' => 123,
+			'owner' => 'admin',
+			'order' => 12,
+			'stackId' => 1,
+			'labels' => array(),
+			'duedate' => null,
+			'overdue' => 0,
+			'archived' => false,
+			'assignedUsers' => ['user1'],
 		], $card->jsonSerialize());
 	}
 

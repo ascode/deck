@@ -5,3 +5,5 @@ js/public/
 css/style.css
 tests/integration/vendor/
 tests/integration/composer.lock
+
+/vendor/
